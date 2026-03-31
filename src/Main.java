@@ -1,6 +1,3 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-
 import java.util.Scanner;
 
 public class Main {
@@ -8,12 +5,11 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-
         int opcao;
         do {
             System.out.println("\n===== MENU =====\n");
             System.out.println("\t1 - Calcular média");
-            System.out.println("\t2 - Ver mensagem");
+            System.out.println("\t2 - Verificar idade");
             System.out.println("\t3 - Sair");
             System.out.print("\nEscolha uma opção: ");
 
@@ -25,7 +21,7 @@ public class Main {
                     break;
 
                 case 2:
-                    verMensagem();
+                    verificarIdade(scanner);
                     break;
 
                 case 3:
@@ -80,8 +76,28 @@ public class Main {
 
     }
 
-    static void verMensagem(){
-        System.out.println("\n\tOlá, seja bem-vindo ao Sistema Java :)\n");
+    static void verificarIdade(Scanner scanner ){
+
+        System.out.println("\nVocê escolheu a opção verificar idade");
+
+        scanner.nextLine();
+
+        System.out.print("\tDigite o seu nome: ");
+        String usuarioNome = scanner.nextLine();
+        System.out.print("\tColoque seu ano de nascimento: ");
+        int anoNascimento = scanner.nextInt();
+
+        scanner.nextLine();
+
+        Usuario usuario = new Usuario();
+        usuario.setNome(usuarioNome);
+        usuario.setAnoNascimento(anoNascimento);
+
+        System.out.println("\n===== SEUS DADOS =====\n");
+        System.out.printf("\tOlá, %s.\n", usuario.getNome());
+        System.out.printf("\tSua idade é %d anos.\n",  usuario.calcularIdade());
+        System.out.printf("\tVocê é %s\n",  usuario.verificarMaiorIdade());
+
     }
 
     static void sairSistema(){
